@@ -1,29 +1,6 @@
-
-
-const cursos = [
-	{
-		id: 10,
-		nombre: 'Node.JS',
-		alias: 'nd',
-		duracion: 36 ,
-		valor: 40000
-	},
-	{
-		id: 11,
-		alias: 'js',
-		nombre: 'JavaScript',
-		duracion: 78 ,
-		valor: 80000
-
-	},
-	{
-
-		id: 12,
-		nombre: 'css',
-		duracion: 26,
-		valor: 35000
-	}
-];
+let {cursos} = require ('./datos.js')
+const express = require('express')
+const app = express()
 
 
 
@@ -113,11 +90,16 @@ let inscribir = cursos.find(function(curso){
 			imprimir();
 
 		}else{
+
 			datos = ( 'El curso a matricular es: ' + inscribir.nombre + '\nEl estudiante a matricular se llama: ' + argv.n + ' y su cedula es: ' + argv.c);
-			const fs = require('fs');
-			fs.writeFile('Matricula.txt', datos, (err) => { 
-			console.log('Se ha creado el archivo.');
-	    if (err) throw err; 
-			}) 
+			
+			
+	   
 		}
 	}
+
+app.get('/', function (req, res) {
+  res.send(datos)
+})
+ 
+app.listen(3000)
