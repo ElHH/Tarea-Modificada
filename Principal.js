@@ -43,13 +43,13 @@ console.log('Los cursos disponibles son: ')
 console.log('ID' + '  Nombre' + '       Duracion' + '    Valor')
 
 mostrarnode (function(idCurso1, curso1, duracionCurso1, valorCurso1){
-	console.log(idCurso1 + '  '+ curso1 + '      ' + duracionCurso1 + '          ' + valorCurso1);
+	imprimir1= (idCurso1 + '  '+ curso1 + '      ' + duracionCurso1 + '          ' + valorCurso1);
 })
 mostrarjavascript (function(idCurso2, curso2, duracionCurso2, valorCurso2){
-	console.log(idCurso2 + '  ' +  curso2 + '   ' + duracionCurso2 + '          ' + valorCurso2);
+	imprimir1 = (idCurso2 + '  ' +  curso2 + '   ' + duracionCurso2 + '          ' + valorCurso2);
 })
 mostrarcss (function(idCurso3,	 curso3, duracionCurso3, valorCurso3){
-	console.log(idCurso3 + '  ' + curso3 + '          ' + duracionCurso3 + '          ' + valorCurso3);
+	imprimir1 = (idCurso3 + '  ' + curso3 + '          ' + duracionCurso3 + '          ' + valorCurso3);
 })
 
 }
@@ -91,15 +91,14 @@ let inscribir = cursos.find(function(curso){
 
 		}else{
 
-			datos = ( 'El curso a matricular es: ' + inscribir.nombre + '\nEl estudiante a matricular se llama: ' + argv.n + ' y su cedula es: ' + argv.c);
+			datos = ( 'El curso a matricular es: ' + inscribir.nombre + '<br>El estudiante a matricular se llama: ' + argv.n + ' y su cedula es: ' + argv.c);
 			
-			
+			app.get('/', function (req, res) {
+  			res.send(datos)
+			})
+ 
+			app.listen(3000)
 	   
 		}
 	}
 
-app.get('/', function (req, res) {
-  res.send(datos)
-})
- 
-app.listen(3000)
